@@ -78,7 +78,7 @@ export default function DocumentUpload({ fields, onExtracted }) {
 
     try {
       setStatus('extracting');
-      const res = await fetch('https://ai-form-autofill.onrender.com/', {
+      const res = await fetch('https://ai-form-autofill.onrender.com/api/extract', {
         method: 'POST',
         body: formData,
       });
@@ -94,7 +94,7 @@ export default function DocumentUpload({ fields, onExtracted }) {
       onExtracted(data.extracted);
     } catch (err) {
       console.error(err);
-      setErrorMsg('Could not connect to extraction server. Ensure the backend server is running on port 5000.');
+      setErrorMsg('Could not connect to the extraction server. Please try again in a moment.');
       setStatus('error');
     }
   };
